@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday🎉</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* ===== LOGIN PAGE ===== */
+  #login-page {
+    background-color: #f7c6d9;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    transition: opacity 1s ease;
+  }
+
+  #login-page h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+
+  #start-btn {
+    background-color: #ff9bb7;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 30px;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+
+  #start-btn:hover {
+    background-color: #ff7aa2;
+    transform: scale(1.05);
+  }
+
+  /* ===== MAIN PAGE ===== */
+  #main-page {
+    position: relative;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    overflow: hidden;
+  }
+
+  /* Stars background */
+  .stars {
+    width: 2px;
+    height: 2px;
+    background: white;
+    position: absolute;
+    animation: twinkle 2s infinite ease-in-out;
+    border-radius: 50%;
+  }
+
+  @keyframes twinkle {
+    0%, 100% {opacity: 0.2;}
+    50% {opacity: 1;}
+  }
+
+  /* Balloons */
+  .balloon {
+    position: absolute;
+    width: 50px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #ff6fae;
+    animation: floatUp 10s linear infinite;
+  }
+
+  .balloon::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 30px;
+    background: white;
+    top: 70px;
+    left: 24px;
+  }
+
+  @keyframes floatUp {
+    0% {transform: translateY(100vh) scale(1);}
+    100% {transform: translateY(-200px) scale(1.2);}
+  }
+
+  /* Happy Birthday Text */
+  h1.birthday {
+    font-size: 4em;
+    text-shadow: 0 0 20px #ff77c9, 0 0 40px #ff66b2;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {text-shadow: 0 0 10px #ff66b2;}
+    to {text-shadow: 0 0 30px #ffa6d8, 0 0 50px #ff99cc;}
+  }
+
+  /* Cake animation */
+  .cake {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin-top: 30px;
+  }
+
+  .layer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #ffb6c1;
+    border-radius: 10px;
+    animation: stack 1s ease forwards;
+  }
+
+  .layer:nth-child(1) {
+    width: 150px; height: 40px; bottom: 0; animation-delay: 0.2s;
+  }
+  .layer:nth-child(2) {
+    width: 120px; height: 30px; bottom: 40px; animation-delay: 0.6s;
+  }
+  .layer:nth-child(3) {
+    width: 90px; height: 25px; bottom: 70px; animation-delay: 1s;
+  }
+
+  @keyframes stack {
+    0% {transform: translateY(100px); opacity: 0;}
+    100% {transform: translateY(0); opacity: 1;}
+  }
+
+  .candle {
+    position: absolute;
+    width: 10px;
+    height: 25px;
+    background: #fff;
+    top: 15px;
+    left: calc(50% - 5px);
+    border-radius: 2px;
+  }
+
+  .flame {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle, #ffcc00 40%, transparent 70%);
+    border-radius: 50%;
+    animation: flicker 0.2s infinite alternate;
+  }
+
+  @keyframes flicker {
+    0% {transform: scale(1);}
+    100% {transform: scale(1.3);}
+  }
+
+  /* Birthday message */
+  .message {
+    margin-top: 40px;
+    max-width: 600px;
+    text-align: center;
+    font-size: 1.3em;
+    color: #ffd6e6;
+    animation: fadeIn 3s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  /* Sparkles */
+  .sparkle {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: sparkle 2s infinite ease-in-out;
+  }
+
+  @keyframes sparkle {
+    0%,100% {opacity: 0;}
+    50% {opacity: 1;}
+  }
+
+</style>
+</head>
+<body>
+
+<div id="login-page">
+  <h1>Welcome to Viraj's Birthday Surprise 🎈</h1>
+  <button id="start-btn">Let's Begin</button>
+</div>
+
+<div id="main-page">
+  <h1 class="birthday">🎉 Happy Birthday, Viraj! 🎂</h1>
+  
+  <div class="cake">
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="candle">
+      <div class="flame"></div>
+    </div>
+  </div>
+
+  <p class="message">
+    Wishing you a day filled with laughter, love, and light.  
+    May your dreams grow taller than this cake — and your smile even brighter!  
+    You’ve grown wiser, kinder, and... okay fine, a little older 😜  
+    Cheers to many more adventures ahead, old man! 🥂✨
+  </p>
+</div>
+
+<script>
+  const startBtn = document.getElementById('start-btn');
+  const loginPage = document.getElementById('login-page');
+  const mainPage = document.getElementById('main-page');
+
+  startBtn.addEventListener('click', () => {
+    loginPage.style.opacity = 0;
+    setTimeout(() => {
+      loginPage.style.display = 'none';
+      mainPage.style.display = 'flex';
+      spawnStars();
+      spawnBalloons();
+      spawnSparkles();
+    }, 1000);
+  });
+
+  function spawnStars() {
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.className = 'stars';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDuration = (1 + Math.random() * 3) + 's';
+      mainPage.appendChild(star);
+    }
+  }
+
+  function spawnBalloons() {
+    for (let i = 0; i < 10; i++) {
+      const balloon = document.createElement('div');
+      balloon.className = 'balloon';
+      balloon.style.left = Math.random() * 100 + '%';
+      balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 80%, 70%)`;
+      balloon.style.animationDelay = Math.random() * 5 + 's';
+      mainPage.appendChild(balloon);
+    }
+  }
+
+  function spawnSparkles() {
+    for (let i = 0; i < 50; i++) {
+      const s = document.createElement('div');
+      s.className = 'sparkle';
+      s.style.width = s.style.height = Math.random() * 3 + 'px';
+      s.style.top = Math.random() * 100 + '%';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.animationDuration = (1 + Math.random() * 2) + 's';
+      mainPage.appendChild(s);
+    }
+  }
+</script>
+
+</body>
+</html>
